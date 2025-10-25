@@ -1,0 +1,8 @@
+-- CreateTable
+CREATE TABLE "Cake" (
+    "id" SERIAL PRIMARY KEY,
+    "email" TEXT UNIQUE NOT NULL,
+    "name" TEXT,
+    "createdAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP
+);
