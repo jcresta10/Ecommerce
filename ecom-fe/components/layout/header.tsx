@@ -15,6 +15,7 @@ import {
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { Button } from "../ui/button"
+import { ClientOnly } from "../client-only"
 
 const components: { title: string; href: string; description: string }[] = [
     {
@@ -64,84 +65,86 @@ export default function Header() {
                 <Leaf className="text-amber-700" size={28} />
                 <span className="font-semibold text-xl text-amber-900">Tea Talk</span>
             </Link>
-            <NavigationMenu viewport={isMobile}>
-                <NavigationMenuList className="flex-wrap">
-                    <NavigationMenuItem ><Link href="/">
-                        Home
-                    </Link>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
-                        <NavigationMenuContent>
-                            <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                                {components.map((component) => (
-                                    <ListItem
-                                        key={component.title}
-                                        title={component.title}
-                                        href={component.href}
-                                    >
-                                        {component.description}
-                                    </ListItem>
-                                ))}
-                            </ul>
-                        </NavigationMenuContent>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem>
-                        <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                            <Link href="/cakes">Our Cakes</Link>
-                        </NavigationMenuLink>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem className="hidden md:block">
-                        <NavigationMenuTrigger>Make your Own</NavigationMenuTrigger>
-                        <NavigationMenuContent>
-                            <ul className="grid w-[300px] gap-4">
-                                <li>
-                                    <NavigationMenuLink asChild>
-                                        <Link href="#">
-                                            <div className="font-medium">Design your cake</div>
-                                            <div className="text-muted-foreground">
-                                                Go through our list of options to create your own cake.
-                                            </div>
-                                        </Link>
-                                    </NavigationMenuLink>
-                                    <NavigationMenuLink asChild>
-                                        <Link href="#">
-                                            <div className="font-medium">Ingredients</div>
-                                            <div className="text-muted-foreground">
-                                                Learn what ingredients we use.
-                                            </div>
-                                        </Link>
-                                    </NavigationMenuLink>
-                                    <NavigationMenuLink asChild>
-                                        <Link href="#">
-                                            <div className="font-medium">Blog</div>
-                                            <div className="text-muted-foreground">
-                                                Read our latest blog posts.
-                                            </div>
-                                        </Link>
-                                    </NavigationMenuLink>
-                                </li>
-                            </ul>
-                        </NavigationMenuContent>
-                    </NavigationMenuItem>
-                    <NavigationMenuItem className="hidden md:block">
-                        <NavigationMenuTrigger>Careers</NavigationMenuTrigger>
-                        <NavigationMenuContent>
-                            <ul className="grid w-[200px] gap-4">
-                                <li>
-                                    <NavigationMenuLink asChild>
-                                        <Link href="#">
-                                            <div className="font-medium">Work with Us</div>
+            <ClientOnly>
+                <NavigationMenu viewport={isMobile}>
+                    <NavigationMenuList className="flex-wrap">
+                        <NavigationMenuItem ><Link href="/">
+                            Home
+                        </Link>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem>
+                            <NavigationMenuTrigger>Categories</NavigationMenuTrigger>
+                            <NavigationMenuContent>
+                                <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                                    {components.map((component) => (
+                                        <ListItem
+                                            key={component.title}
+                                            title={component.title}
+                                            href={component.href}
+                                        >
+                                            {component.description}
+                                        </ListItem>
+                                    ))}
+                                </ul>
+                            </NavigationMenuContent>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem>
+                            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                                <Link href="/cakes">Our Cakes</Link>
+                            </NavigationMenuLink>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem className="hidden md:block">
+                            <NavigationMenuTrigger>Make your Own</NavigationMenuTrigger>
+                            <NavigationMenuContent>
+                                <ul className="grid w-[300px] gap-4">
+                                    <li>
+                                        <NavigationMenuLink asChild>
+                                            <Link href="#">
+                                                <div className="font-medium">Design your cake</div>
+                                                <div className="text-muted-foreground">
+                                                    Go through our list of options to create your own cake.
+                                                </div>
+                                            </Link>
+                                        </NavigationMenuLink>
+                                        <NavigationMenuLink asChild>
+                                            <Link href="#">
+                                                <div className="font-medium">Ingredients</div>
+                                                <div className="text-muted-foreground">
+                                                    Learn what ingredients we use.
+                                                </div>
+                                            </Link>
+                                        </NavigationMenuLink>
+                                        <NavigationMenuLink asChild>
+                                            <Link href="#">
+                                                <div className="font-medium">Blog</div>
+                                                <div className="text-muted-foreground">
+                                                    Read our latest blog posts.
+                                                </div>
+                                            </Link>
+                                        </NavigationMenuLink>
+                                    </li>
+                                </ul>
+                            </NavigationMenuContent>
+                        </NavigationMenuItem>
+                        <NavigationMenuItem className="hidden md:block">
+                            <NavigationMenuTrigger>Careers</NavigationMenuTrigger>
+                            <NavigationMenuContent>
+                                <ul className="grid w-[200px] gap-4">
+                                    <li>
+                                        <NavigationMenuLink asChild>
+                                            <Link href="#">
+                                                <div className="font-medium">Work with Us</div>
 
-                                        </Link>
-                                    </NavigationMenuLink>
-                                </li>
-                            </ul>
-                        </NavigationMenuContent>
-                    </NavigationMenuItem>
+                                            </Link>
+                                        </NavigationMenuLink>
+                                    </li>
+                                </ul>
+                            </NavigationMenuContent>
+                        </NavigationMenuItem>
 
-                </NavigationMenuList>
-            </NavigationMenu>
+                    </NavigationMenuList>
+                </NavigationMenu>
+            </ClientOnly>
             <div className="flex items-center gap-4">
                 <Link href="/cart">
                     <Button className="rounded-full p-2" variant="outline" size="lg">

@@ -9,11 +9,12 @@ export class CakesService {
   constructor(private readonly prisma: PrismaService) {}
 
   create(createCakeDto: CreateCakeDto) {
-    // Pass the DTO directly to Prisma
     return this.prisma.cake.create({
       data: {
-        email: createCakeDto.email,
         name: createCakeDto.name,
+        description: createCakeDto.description,
+        ingredients: createCakeDto.ingredients,
+        image: createCakeDto.image,
       },
     });
   }

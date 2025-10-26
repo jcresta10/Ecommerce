@@ -1,15 +1,19 @@
-import { IsOptional, IsString } from 'class-validator';
-export class CreateCakeDto {
-  @IsString()
-  email: string;
+import { IsNotEmpty, IsOptional, IsString, IsArray } from 'class-validator';
 
+export class CreateCakeDto {
   @IsOptional()
   @IsString()
   name?: string;
 
   @IsString()
-  ingredients: string;
+  @IsNotEmpty()
+  description: string;
 
+  @IsArray()
+  @IsString({ each: true })
+  ingredients: string[];
+
+  @IsOptional()
   @IsString()
-  instructions: string;
+  image?: string;
 }

@@ -11,9 +11,23 @@ datasource db {
 }
 
 model Cake {
-    id        Int      @id @default(autoincrement())
-    email     String   @unique
-    name      String?
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    id          Int      @id @default(autoincrement())
+    name        String?
+    description String
+    ingredients String[]
+    image       String?
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+}
+
+model Tea {
+    id          Int      @id @default(autoincrement())
+    name        String
+    description String
+    type        String // e.g., "Black", "Green", "Herbal", "Milk Tea"
+    ingredients String[] // array of ingredients
+    image       String? // optional image URL
+    price       Float? // optional price
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
 }
